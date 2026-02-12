@@ -1,8 +1,18 @@
 #  SwiftUI + UIKit Interoperability - Beyond the Basics
-## John Sundell
 
+@Metadata {
+    @TitleHeading("Talk")
+}
 
-## Somewhat mixed experience?
+John Sundell
+
+## Abstract
+
+When adopting SwiftUI, it's very common to mix it with UIKit, either to be able to use existing UIKit components, to work around SwiftUI issues and missing features, or to handle tasks like navigation and coordination. In this talk, John will explore how we can make the most out of the SwiftUI + UIKit interoperability APIs, how to ensure that SwiftUI's layout system works well with tools like Auto Layout, how pass configuration properties, events, and data between the two UI frameworks in a smooth way, and much more.
+
+## Key Takeaways
+
+### Somewhat mixed experience?
 
 > Less about one being old and new: they are peers within the Apple technology stack.
 
@@ -19,10 +29,10 @@
 Using SwiftUI as a default, like UIKit is a default over CoreAnimation & Metal for most apps.
 Using UIKit doesn't mean we're writing legacy code.
 
-UIKit -> UIViewRepresentable / UIViewControllerRepresentable -> SwiftUI
-SwiftUI -> UIHostingController / UIHostingConfiguration -> UIKit
+UIKit → UIViewRepresentable / UIViewControllerRepresentable → SwiftUI
+SwiftUI → UIHostingController / UIHostingConfiguration → UIKit
 
-## Connecting SwiftUI data to UIKit based controls
+### Connecting SwiftUI data to UIKit based controls
 
 Be sure to only create the UIView in the makeUIView function, and only update the UIView in the updateUIView funtion
 
@@ -33,28 +43,28 @@ struct TextView: UIViewRepresentable {
     func makeUIView(context: Context) -> UITextView {
         UITextView()
     }
- 
+
     func updateUIView(_ uiView: UITextView, context: Context) {
         uiView.text = text
         ...
         uiView.delegate = context.coordinator
     }
 
-    ... 
+    ...
     func makeCoordinator() -> Coordinator {
         Coordiantor()
-    } 
+    }
 }
 }
 ```
 
 ```
 extension TextView {
-    
+
 }
 ```
 
-## Connecting UIKit data model to SwiftUI views
+### Connecting UIKit data model to SwiftUI views
 
 Make our model class obserable:
 ```swift
@@ -70,7 +80,7 @@ final class ProfileViewController: UIViewController {
     private var user: User
 
     viewWillLayoutSubviews() {
-        // respond to model updates 
+        // respond to model updates
         // called automatically because of the observation
     }
 
@@ -83,7 +93,7 @@ final class ProfileViewController: UIViewController {
 }
 ```
 
-## Sharing stylings and configuration
+### Sharing stylings and configuration
 
 This is not a SwiftUI convention, colour should use modifiers:
 
@@ -93,7 +103,7 @@ struct TextView: UIViewRepresentable {
 
     // colour changes here, so they are updated if the underlying values change
     func updateUIView() {
-        
+
     }
 }
 ```
@@ -103,7 +113,7 @@ Constraints:
 - Background is a view, not just a colour.
 - `Font.resolve(in:)` is iOS 26 only
 
-### We could implement a theme:
+#### We could implement a theme:
 
 ```swift
 struct Theme {
@@ -127,7 +137,7 @@ struct TextView: UIViewRepresentable {
 }
 ```
 
-## Connecting SwiftUI and UIKit layout systems:
+### Connecting SwiftUI and UIKit layout systems:
 
 In UIKit, using intrinsicContentSize
 ```swift
@@ -156,7 +166,7 @@ func sizeThatFits() {
 }
 ```
 
-## Managing the safe area when mixing SwiftUI and UIKit
+### Managing the safe area when mixing SwiftUI and UIKit
 
 ```
 HomeViewController->

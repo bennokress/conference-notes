@@ -1,26 +1,24 @@
 #  The Wonderful World of Private APIs
-## Quentin Fasquel
 
-> Why join the navy when you can be a pirate?
-> - Steve Jobs
+@Metadata {
+    @TitleHeading("Talk")
+}
 
-This talk does **not** cover:
-- Jailbreak
-- Getting through App Store Review
+Quentin Fasquel
 
-Why should you care about private APIs?
-- Educational Curiosity
-- System integration
-- Visual effects
-- Developer tools (RocketSim)
+## Abstract
 
-## Trying to recreate the camera app in SwiftUI
+Ever wondered what Apple keeps behind the velvet rope? Let's sneak a peek at private APIs, see how we can reach them from Swift and Objective-C, and uncover some of the magic that powers iOS behind the scenes.
+
+## Key Takeaways
+
+### Trying to recreate the camera app in SwiftUI
 
 Internal SFSymbols are present in the simulator private frameworks
 `SFSCoreGlyphsBundle`
 `camera.nightmode`
 
-### How to use a private Objective-C API?
+#### How to use a private Objective-C API?
 
 Declare the header-file of the private APIs and it should compile:
 `#import "_UIAssetManager.h"`
@@ -35,7 +33,7 @@ or a runtime look-up:
 Class bundleClass = NSClassFromString(@"SFSCoreGlyphsBundle");
 ```
 
-### How to *find* a private Objective-C API?
+#### How to *find* a private Objective-C API?
 
 `YourObject.h`
 `YourObject+Private.h`
@@ -73,7 +71,7 @@ Not type-safe, but available as a package from Quentin.
 `CAMeshTransform`
 `CAMutableMeshTransform`
 
-## What about Swift?
+### What about Swift?
 Swift doesn't have header files? So how do we find private Swift APIs?
 
 `swiftmodule`:
