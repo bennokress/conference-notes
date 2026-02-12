@@ -16,8 +16,38 @@ In this talk, Soroush will discuss tools for rapidly iterating on accessibility 
 
 ## Key Takeaways
 
--
+Permanent, temporary and situational disability.
+
+Accessibility is different things to different people.
+
+**Vision:**
+- Glasses to accommodate vision
+- Uncorrectable vision issues so she uses really large text on a larger phone.
+- Turns on bold text and Show Borders because he likes how they look.
+
+Two ends of a spectrum:
+Some people prefer dark mode: light sensitivity.
+Some people prefer light mode: astigmatism.
+
+**Motion**
+Some people use assistive touch.
+Some people need keyboard shortcuts.
+
+> Accessibility is a broad umbrella.
+
+Making your app accessible is making it usable.
+Give your users the tools to decide for themselves.
+
+### Where does that leave our work?
+
+The software always changes:
+
+Example 1: Date reads as "8/2" rather the "February 8th."
+Example 2: Changing image from flag to checkmark introduces the "selected" trait.
+Example 3: Missing values from accessibility rotors.
+
+Accessibility snapshot library shows labels in the preview.
 
 ## Links
 
--
+- [Accessibility Snapshot](https://github.com/cashapp/AccessibilitySnapshot)
